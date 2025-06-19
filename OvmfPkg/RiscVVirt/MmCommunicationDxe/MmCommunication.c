@@ -62,7 +62,7 @@ struct GuidMapping {
   UINT32    ChannelId;
 };
 
-#define MM_STR  "riscv,sbi-mpxy-mm"
+#define MM_STR  "riscv,sbi-mpxy-uefi"
 
 STATIC struct GuidMapping  GuidChidArray[] = {
   {
