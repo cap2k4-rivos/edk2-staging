@@ -62,6 +62,7 @@
   HobPrintLib|MdeModulePkg/Library/HobPrintLib/HobPrintLib.inf
   ImagePropertiesRecordLib|MdeModulePkg/Library/ImagePropertiesRecordLib/ImagePropertiesRecordLib.inf
   PeCoffGetEntryPointLib|MdePkg/Library/BasePeCoffGetEntryPointLib/BasePeCoffGetEntryPointLib.inf
+  SampleRasLib|OvmfPkg/RiscVVirt/Library/SampleRasLib/SampleRasLib.inf
   ReriLib|OvmfPkg/RiscVVirt/Library/ReriLib/ReriLib.inf
 
   #
