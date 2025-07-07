@@ -58,6 +58,7 @@ READ_LOCK_STATUS   = TRUE
   INF MdeModulePkg/Universal/FaultTolerantWriteDxe/FaultTolerantWriteStandaloneMm.inf
   INF MdeModulePkg/Universal/Variable/RuntimeDxe/VariableStandaloneMm.inf
   INF OvmfPkg/RiscVVirt/RasGatewayDriverMM/RasGatewayDriverMM.inf
+  INF OvmfPkg/RiscVVirt/Drivers/GhesRasDriver/GhesRasDriver.inf
 
 ################################################################################
 #

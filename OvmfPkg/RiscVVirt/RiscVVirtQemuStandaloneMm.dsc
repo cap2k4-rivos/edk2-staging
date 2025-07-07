@@ -139,6 +139,7 @@
   OvmfPkg/VirtNorFlashDxe/VirtNorFlashStandaloneMm.inf
   MdeModulePkg/Universal/FaultTolerantWriteDxe/FaultTolerantWriteStandaloneMm.inf
   OvmfPkg/RiscVVirt/RasGatewayDriverMM/RasGatewayDriverMM.inf
+  OvmfPkg/RiscVVirt/Drivers/GhesRasDriver/GhesRasDriver.inf
 
   MdeModulePkg/Universal/Variable/RuntimeDxe/VariableStandaloneMm.inf {
     <LibraryClasses>

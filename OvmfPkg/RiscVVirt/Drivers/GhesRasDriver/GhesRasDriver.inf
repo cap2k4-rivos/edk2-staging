@@ -1,0 +1,40 @@
+## @file
+#
+#  StandaloneMM GHES generic driver.
+#
+#  Copyright (c) 2024, Rivos Inc. All rights reserved.
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x0001001A
+  BASE_NAME                      = GhesRasDriver
+  FILE_GUID                      = CB53ACD9-A1A1-43B3-A638-AC74DA5D9DA2
+  MODULE_TYPE                    = MM_STANDALONE
+  VERSION_STRING                 = 1.0
+  PI_SPECIFICATION_VERSION       = 0x00010032
+  ENTRY_POINT                    = GhesMmDriverInitialize
+
+[Sources]
+  GhesRasDriver.c
+
+[Packages]
+  MdeModulePkg/MdeModulePkg.dec
+  MdePkg/MdePkg.dec
+  StandaloneMmPkg/StandaloneMmPkg.dec
+  OvmfPkg/OvmfPkg.dec
+
+[LibraryClasses]
+  BaseMemoryLib
+  DebugLib
+  StandaloneMmDriverEntryPoint
+  SampleRasLib
+  RiscVSbiLib
+  ReriLib
+
+[Protocols]
+  gMmHestErrorSourceDescProtocolGuid      ##PRODUCES
+
+[Depex]
+  TRUE
