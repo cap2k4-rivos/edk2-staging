@@ -443,6 +443,9 @@
   # builds of shim that use the protocol incorrectly.
   gUefiOvmfPkgTokenSpaceGuid.PcdUninstallMemAttrProtocol|FALSE|BOOLEAN|0x67
 
+  gUefiOvmfPkgTokenSpaceGuid.PcdRasErrBlockAddr|0x100000000|UINT64|0x10000012
+  gUefiOvmfPkgTokenSpaceGuid.PcdRasErrBlockSize|0x100000|UINT64|0x10000013
+
 [PcdsFeatureFlag]
   gUefiOvmfPkgTokenSpaceGuid.PcdQemuBootOrderPciTranslation|TRUE|BOOLEAN|0x1c
   gUefiOvmfPkgTokenSpaceGuid.PcdQemuBootOrderMmioTranslation|FALSE|BOOLEAN|0x1d
