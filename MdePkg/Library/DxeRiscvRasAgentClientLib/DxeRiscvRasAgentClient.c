@@ -153,16 +153,15 @@ RacSendMMCommand (
   UINTN                      CommBufferSize;
   EFI_MM_COMMUNICATE_HEADER  *SmmCommunicateHeader;
 
-  CommBufferSize       = MM_COMMUNICATE_HEADER_SIZE + CmdLen + sizeof (FuncId);
+  CommBufferSize       = MM_COMMUNICATE_HEADER_SIZE + *RespLen;
   SmmCommunicateHeader = AllocateZeroPool (CommBufferSize);
   if (SmmCommunicateHeader == NULL) {
     return EFI_OUT_OF_RESOURCES;
   }
 
   CopyGuid (&SmmCommunicateHeader->HeaderGuid, &gMmHestGetErrorSourceInfoGuid);
-  SmmCommunicateHeader->Data[0] = FuncId;
-  CopyMem (&SmmCommunicateHeader->Data[1], CommBuffer, CmdLen);
-  SmmCommunicateHeader->MessageLength = CmdLen + sizeof (FuncId);
+  CopyMem (SmmCommunicateHeader->Data, (const void *)CommBuffer, *RespLen);
+  SmmCommunicateHeader->MessageLength = *RespLen;
 
   Status = mMmCommunication2->Communicate (
                                 mMmCommunication2,
@@ -292,7 +291,7 @@ RacGetNumberErrorSources (
   RasRpmiRespHeader  *RespHdr = &RasMsgBuf.RespHdr;
 
   ZeroMem (&RasMsgBuf, sizeof (RasMsgBuf));
-
+  RespHdr->func_id = RAS_GET_NUM_ERR_SRCS;
   Status = gSendCommand (&RasMsgBuf, 0, &RespLen, RAS_GET_NUM_ERR_SRCS);
   if (EFI_ERROR (Status)) {
     return Status;
@@ -333,7 +332,7 @@ RacGetErrorSourceIDList (
   if (ErrorSourceList == NULL) {
     return EFI_INVALID_PARAMETER;
   }
-
+  gErrorSourceListResp.RespHdr.func_id = RAS_GET_ERR_SRCS_ID_LIST;
   Status = gSendCommand (&gErrorSourceListResp, 0, &RespLen, RAS_GET_ERR_SRCS_ID_LIST);
   if (EFI_ERROR (Status)) {
     return Status;
@@ -377,6 +376,7 @@ RacGetErrorSourceDescriptor (
   ZeroMem (&gErrDescResp, sizeof (gErrDescResp));
 
   *Desc = (UINT8)SourceID;
+  gErrDescResp.RspHdr.func_id = RAS_GET_ERR_SRC_DESC;
 
   Status = gSendCommand (&gErrDescResp, sizeof (SourceID), &RespLen, RAS_GET_ERR_SRC_DESC);
   if (EFI_ERROR (Status)) {

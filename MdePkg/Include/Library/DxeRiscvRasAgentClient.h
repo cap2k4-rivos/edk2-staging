@@ -33,6 +33,7 @@ typedef struct __packed32 {
   UINT32    flags;
   UINT32    remaining;
   UINT32    returned;
+  UINT32    func_id;
 } RasRpmiRespHeader;
 
 typedef struct __packed32 {
